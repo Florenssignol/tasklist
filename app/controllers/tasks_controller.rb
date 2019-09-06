@@ -4,6 +4,9 @@ class TasksController < ApplicationController
 
     def index 
         @tasks = current_user.tasks
+        if params[:filter_by_tag] 
+            @tasks = @tasks.select{|task| task.tags.any? {|tag| tag.name == params[:filter_by_tag]}}
+        end
     end
 
     def show 
@@ -47,6 +50,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-        params.require(:task).permit(:name, :done, :all_tags)
+        params.require(:task).permit(:name, :done, :description, :duration, :all_tags)
     end
 end

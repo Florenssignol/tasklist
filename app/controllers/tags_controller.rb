@@ -6,7 +6,7 @@ class TagsController < ApplicationController
         @tags = current_user.tags
     end
 
-    def show 
+    def show
     end
 
     def new

@@ -17,6 +17,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :task_description%>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.select :duration, [5, 10, 15, 20], id: :task_duration %>
+  </div>
+
+  <div class="field">
     <%= form.label :done %>
     <%= form.check_box :done, id: :task_done %>
   </div>
