@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
-    before_action :set_task, only: [:show, :edit, :update, :destroy]
+    before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done]
     before_action :authenticate_user!
 
     def index 
         @tasks = current_user.tasks
         if params[:filter_by_tag] 
-            @tasks = @tasks.select{|task| task.tags.any? {|tag| tag.name == params[:filter_by_tag]}}
+            @tasks = @tasks.select{|task| task.tags.any? {|tag| tag.name == params[:filter_by_tag]}} 
         end
+        @tasks = @tasks.select{|task| task.done == false}
     end
 
     def show 
@@ -43,6 +44,20 @@ class TasksController < ApplicationController
         redirect_to tasks_url, notice: 'Task was successfully destroyed.'
     end 
 
+    def mark_as_done
+        if @task.done
+            redirect_to tasks_path, notice: 'This task is already done.'
+        else
+            @task.update!(done: true, done_at: Time.now)
+            redirect_to tasks_path, notice: 'Congratulations, this task is done.'
+        end
+    end
+
+    def archived
+        @tasks = current_user.tasks
+        @tasks = @tasks.select{|task| task.done == true}
+    end
+
     private 
 
     def set_task
@@ -50,6 +65,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-        params.require(:task).permit(:name, :done, :description, :duration, :all_tags)
+        params.require(:task).permit(:name, :description, :duration, :all_tags)
     end
 end
