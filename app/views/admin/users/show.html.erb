@@ -1,0 +1,23 @@
+<h1>User infos</h1>
+<h2>lists</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.lists.each do |list| %>
+      <tr>
+        <td><%= link_to list.name, admin_list_path(list) %></td>
+        <td><%= list.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', admin_users_path %>

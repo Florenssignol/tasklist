@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :admins
   namespace :admin do 
     resources :users
+    resources :lists
   end 
   get '/admin', to: 'admins#index'
   resources :tags, only: [:index, :show, :edit, :update, :destroy]
