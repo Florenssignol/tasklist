@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_list
     before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done]
-    before_action :authenticate_user!
 
     def index 
         @tasks = @list.tasks
@@ -20,6 +20,7 @@ class TasksController < ApplicationController
         @task.list_id = @list.id
 
         if @task.save
+            @task.list.update_percentage
             redirect_to list_tasks_path(@list.id), notice: 'Task was successfully created.'
         else 
             render :new 
@@ -47,6 +48,7 @@ class TasksController < ApplicationController
             redirect_to list_tasks_path, notice: 'This task is already done.'
         else
             @task.update!(done: true, done_at: Time.now)
+            @task.list.update_percentage
             redirect_to list_tasks_path, notice: 'Congratulations, this task is done.'
         end
     end

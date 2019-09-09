@@ -6,6 +6,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Percentage Done</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= link_to list.name, list_tasks_path(list)%></td>
         <td><%= list.description %></td>
+        <td><%= list.percentage_done %></td>
         <td><%= link_to 'Edit', edit_list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

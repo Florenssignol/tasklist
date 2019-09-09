@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
+    belongs_to :list
 
     accepts_nested_attributes_for :tags
 
