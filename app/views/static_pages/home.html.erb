@@ -1,10 +1,11 @@
 <h1>Aloha</h1>
 <h2>Welcome to the task project</h2>
 
-<p><%= link_to "consult all your lists", lists_path %></p>
-
-<p><%= link_to "consult all the tags list", tags_path %></p>
-
-<p><%= link_to "sign in", new_user_session_path %></p>
-
-<p><%= link_to "create your account", new_user_registration_path %></p>
+<% if user_signed_in? %>
+    <p><%= link_to "consult all your lists", lists_path %></p>
+    <p><%= link_to "consult all the tags list", tags_path %></p>
+    <p><%= link_to "sign out", destroy_user_session_path, method: :delete %></p>
+<% else %>
+    <p><%= link_to "sign in", new_user_session_path %></p>
+    <p><%= link_to "create your account", new_user_registration_path %></p>
+<% end %>
