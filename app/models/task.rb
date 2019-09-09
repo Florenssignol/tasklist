@@ -1,11 +1,11 @@
 class Task < ApplicationRecord
-    belongs_to :user
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
 
     accepts_nested_attributes_for :tags
 
     validates :name, presence: true
+    validates :list_id, presence: true
 
     def all_tags=(names)
       self.tags = names.split(",").map do |name|

@@ -9,17 +9,21 @@
   </thead>
 
   <tbody>
+    <% if @tasks.size == 0 %>
+    <tr>
+      <td colspan="6">No tasks in this list</td>
+    </tr> 
+    <% end %>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.name %></td>
         <td><%= task.duration %></td>
         <td><%= task.description %></td>
         <% if !task.done %>
-        <td><%= link_to 'Mark as done', mark_as_done_task_path(task) %></td>
+        <td><%= link_to 'Mark as done', mark_as_done_list_task_path(@list, task) %></td>
         <% end %>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_list_task_path(@list, task) %></td>
+        <td><%= link_to 'Destroy', list_task_path(@list, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,7 +31,7 @@
 
 <br>
 
-<p><%= link_to 'New Task', new_task_path %></p>
+<p><%= link_to 'New Task', new_list_task_path %></p>
 <p><%= link_to 'Home', root_path %></p>
 <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
 
