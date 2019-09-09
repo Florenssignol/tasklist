@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   devise_for :users
   devise_for :admins
+  namespace :admin do 
+    resources :users
+  end 
   get '/admin', to: 'admins#index'
   resources :tags, only: [:index, :show, :edit, :update, :destroy]
   resources :lists, only: [:index, :new, :create, :edit, :update, :destroy] do 
