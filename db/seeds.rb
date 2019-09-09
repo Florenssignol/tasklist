@@ -10,8 +10,8 @@
 Admin.create!(email: 'toto@gmail.com', password: 'foofoo')
 
 # Users
-user_1 = User.create!(email: 'user_1@gmail.com', password: 'foofoo')
-user_2 = User.create!(email: 'user_2@gmail.com', password: 'foofoo')
+user_1 = User.create!(name: "toto", email: 'user_1@gmail.com', password: 'foofoo')
+user_2 = User.create!(name: "tintin", email: 'user_2@gmail.com', password: 'foofoo')
 
 user_1_list_1 = user_1.lists.create!(name: 'courses', description: 'pour le carrefour')
 user_1_list_2 = user_1.lists.create!(name: 'lecture', description: 'les livres que je dois lire')
