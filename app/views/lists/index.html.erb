@@ -1,18 +1,20 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Lists</h1>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @lists.each do |list| %>
       <tr>
-        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to list.name, list_tasks_path(list)%></td>
+        <td><%= list.description %></td>
         <td><%= link_to 'Edit', edit_list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -21,5 +23,5 @@
 </table>
 
 <br>
-
-<%= link_to 'New List', new_list_path %>
+<p><%= link_to 'New List', new_list_path %></p>
+<p><%= link_to 'Home', root_path %></p>

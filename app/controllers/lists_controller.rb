@@ -3,10 +3,7 @@ class ListsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @lists = List.all
-  end
-
-  def show
+    @lists = current_user.lists
   end
 
   def new
@@ -18,37 +15,34 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @task.user_id = current_user.id
+    @list.user_id = current_user.id
 
-      if @list.save
-        redirect_to @list, notice: 'List was successfully created.' 
-      else
-        render :new 
-      end
+    if @list.save
+      redirect_to list_tasks_path(@list), notice: 'List was successfully created.' 
+    else
+      render :new 
     end
   end
 
   def update
-      if @list.update(list_params)
-        redirect_to @list, notice: 'List was successfully updated.' 
-      else
-        render :edit
-      end
+    if @list.update(list_params)
+      redirect_to list_tasks_path(@list), notice: 'List was successfully updated.' 
+    else
+      render :edit
     end
   end
 
   def destroy
-      redirect_to lists_url, notice: 'List was successfully destroyed.' 
-    end
+    redirect_to lists_url, notice: 'List was successfully destroyed.' 
   end
 
   private
 
-    def set_list
-      @list = List.find(params[:id])
-    end
+  def set_list
+    @list = List.find(params[:id])
+  end
 
-    def list_params
-      params.fetch(:list, {:name, :description, :percentage_done})
-    end
+  def list_params
+    params.require(:list).permit(:name, :description)
+  end
 end

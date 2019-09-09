@@ -11,7 +11,7 @@
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= link_to(tag.name, tasks_path(filter_by_tag: tag.name))%></td>
+        <td><%=tag.name %></td>
         <td><%= link_to 'Show', tag %></td>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,6 +22,5 @@
 
 <br>
 
-<p><%= link_to 'New Tag', new_tag_path %></p>
 <p><%= link_to 'Home', root_path %></p>
 <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>

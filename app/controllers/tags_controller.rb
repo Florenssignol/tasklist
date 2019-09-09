@@ -8,21 +8,6 @@ class TagsController < ApplicationController
 
     def show
     end
-
-    def new
-        @tag = Tag.new
-    end 
-
-    def create
-        @tag = Tag.new(tag_params)
-        @tag.user_id = current_user.id
-
-        if @tag.save 
-            redirect_to @tag, notice: 'Tag was successfully created.'
-        else 
-            render :new 
-        end
-    end 
     
     def edit 
     end 

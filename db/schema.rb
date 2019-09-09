@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_085254) do
+ActiveRecord::Schema.define(version: 2019_09_09_090832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_085254) do
     t.integer "percentage_done", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_085254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "done_at"
+    t.bigint "list_id"
+    t.index ["list_id"], name: "index_tasks_on_list_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -62,7 +66,9 @@ ActiveRecord::Schema.define(version: 2019_09_09_085254) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lists", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "taggings", "tasks"
+  add_foreign_key "tasks", "lists"
   add_foreign_key "tasks", "users"
 end
