@@ -11,5 +11,8 @@ class List < ApplicationRecord
         count_task = tasks_done.count
         percentage = count_task * 100 / number_of_tasks_in_list
         self.update!(percentage_done: percentage)
+        if percentage == 100
+            UserMailer.with(user: self.user, list: self).list_finished_email.deliver_later
+        end
     end
 end

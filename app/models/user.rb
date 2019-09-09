@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_many :lists, dependent: :destroy
   has_many :tags, through: :lists
+
+  validates :name, presence: true
   
 end
