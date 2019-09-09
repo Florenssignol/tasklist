@@ -1,0 +1,29 @@
+<h1><%= @list.name %>'s list infos</h1>
+<h2>description: <%= @list.description %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Done</th>
+      <th>Done at</th>
+      <th>Duration</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |tasks| %>
+      <tr>
+        <td><%= tasks.name %></td>
+        <td><%= tasks.description %></td>
+        <td><%= tasks.done %></td>
+        <td><%= tasks.done_at %></td>
+        <td><%= tasks.duration %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', admin_user_path(@list.user) %>
