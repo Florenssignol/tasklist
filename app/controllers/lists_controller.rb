@@ -18,7 +18,8 @@ class ListsController < ApplicationController
     @list.user_id = current_user.id
 
     if @list.save
-      redirect_to list_tasks_path(@list), notice: 'List was successfully created.' 
+      redirect_to list_tasks_path(@list), notice: 'List was successfully created.'
+      List.reindex 
     else
       render :new 
     end

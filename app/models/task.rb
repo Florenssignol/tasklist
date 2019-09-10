@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+    include AlgoliaSearch
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
     belongs_to :list
@@ -17,4 +18,11 @@ class Task < ApplicationRecord
     def all_tags
       self.tags.map(&:name).join(", ")
     end
+
+    algoliasearch do
+      attributes :name, :created_at
+      searchableAttributes ['name']
+      customRanking ['created_at']
+    end
+    
 end

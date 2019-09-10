@@ -22,6 +22,7 @@ class TasksController < ApplicationController
         if @task.save
             @task.list.update_percentage
             redirect_to list_tasks_path(@list.id), notice: 'Task was successfully created.'
+            Task.reindex
         else 
             render :new 
         end
