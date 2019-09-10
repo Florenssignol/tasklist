@@ -23,6 +23,11 @@ class Task < ApplicationRecord
       attributes :name, :description, :created_at
       searchableAttributes ['name', 'description']
       customRanking ['desc(created_at)']
+      add_attribute :user_id
+    end
+
+    def user_id
+      self.list.user_id
     end
     
 end

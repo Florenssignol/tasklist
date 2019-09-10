@@ -60,7 +60,7 @@ class TasksController < ApplicationController
     end
 
     def search 
-        @tasks = Task.search(params[:query])
+        @tasks = Task.search(params[:query], filters: "user_id:#{current_user.id}")
     end
 
     private 
