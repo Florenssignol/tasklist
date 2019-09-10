@@ -20,9 +20,9 @@ class Task < ApplicationRecord
     end
 
     algoliasearch do
-      attributes :name, :created_at
-      searchableAttributes ['name']
-      customRanking ['created_at']
+      attributes :name, :description, :created_at
+      searchableAttributes ['name', 'description']
+      customRanking ['desc(created_at)']
     end
     
 end

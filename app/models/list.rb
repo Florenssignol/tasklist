@@ -20,7 +20,7 @@ class List < ApplicationRecord
     algoliasearch do
         attributes :name, :created_at
         searchableAttributes ['name']
-        customRanking ['created_at']
+        customRanking ['desc(created_at)']
     end
 
 end
