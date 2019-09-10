@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main_title {
-    font-family: 'Manjari', sans-serif;
-    padding-top: 30px;
-    padding-left: 30px;
-    text-align: center;
-}
-
 .titles {
     font-family: 'Manjari', sans-serif;
     margin: 10px;
@@ -25,16 +18,16 @@
 }
 
 .links {
-    background-color: #C19AB7;
+    background-color: #0B7189;
     margin: 12px;
     padding: 13px;
     padding-left: 20px;
     font-size: 13px;
-    color: black;
+    color: white;
 }
 
-a:visited {
-    color: black;
+a.links:visited {
+    color: white;
 }
 
 a.links:hover {
@@ -48,6 +41,7 @@ a.links:hover {
     margin-top: 60px;
     font-size: 13px;
     padding-left: 10px;
+    color: black;
 }
 
 a.lower-texts:hover {
@@ -57,9 +51,14 @@ a.lower-texts:hover {
     text-decoration: none;
 }
 
+a.lower-texts:visited {
+    color: black;
+}
+
 .signed-out-texts {
     font-size: 13px;
     padding-left: 10px;
+    color: black;
 }
 
 a.signed-out-texts:hover {

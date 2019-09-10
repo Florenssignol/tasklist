@@ -1,20 +1,21 @@
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<h1>Lists</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Percentage Done</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="main_title">
+  <h1>Lists</h1>
+</div>
+<div class="main_text">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Percentage Done</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
     <% @lists.each do |list| %>
       <tr>
-        <td><%= link_to list.name, list_tasks_path(list)%></td>
+        <td class="secondary-pages-title-links "><%= link_to list.name, list_tasks_path(list), class: "secondary-pages-title-links "%></td>
         <td><%= list.description %></td>
         <td><%= list.percentage_done %></td>
         <td><%= link_to 'Edit', edit_list_path(list) %></td>
@@ -26,28 +27,28 @@
 </table>
 <br>
 <% if current_user.list_accesses.count >= 1 %>
-<h2>Lists shared with you</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Percentage Done</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <h2>Lists shared with you</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Percentage Done</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% current_user.list_accesses.each do |list_access| %>
-    <tr>
-      <td><%= link_to list_access.list.name, list_tasks_path(list_access.list) %></td>
-      <td><%= list_access.list.description %></td>
-      <td><%= list_access.list.percentage_done %></td>
-      <td><%= link_to 'Edit', edit_list_path(list_access.list) %></td>
-    </tr>
-  <% end %>
+    <tbody>
+      <% current_user.list_accesses.each do |list_access| %>
+        <tr>
+          <td><%= link_to list_access.list.name, list_tasks_path(list_access.list) %></td>
+          <td><%= list_access.list.description %></td>
+          <td><%= list_access.list.percentage_done %></td>
+          <td><%= link_to 'Edit', edit_list_path(list_access.list) %></td>
+        </tr>
+    <% end %>
+  </table>
 <% end %>
-</table>
 <br>
 <p><%= link_to 'New List', new_list_path %></p>
 <p><%= link_to 'Home', root_path %></p>
