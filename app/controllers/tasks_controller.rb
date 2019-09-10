@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_list
+    before_action :set_list, except: :search
     before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done]
 
     def index 
@@ -57,6 +57,10 @@ class TasksController < ApplicationController
     def archived
         @tasks = @list.tasks
         @tasks = @tasks.select{|task| task.done == true}
+    end
+
+    def search 
+        @tasks = Task.search(params[:query])
     end
 
     private 
