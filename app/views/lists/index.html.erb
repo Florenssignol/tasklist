@@ -24,7 +24,30 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<% if current_user.list_accesses.count >= 1 %>
+<h2>Lists shared with you</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Percentage Done</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% current_user.list_accesses.each do |list_access| %>
+    <tr>
+      <td><%= link_to list_access.list.name, list_tasks_path(list_access.list) %></td>
+      <td><%= list_access.list.description %></td>
+      <td><%= list_access.list.percentage_done %></td>
+      <td><%= link_to 'Edit', edit_list_path(list_access.list) %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
 <br>
 <p><%= link_to 'New List', new_list_path %></p>
 <p><%= link_to 'Home', root_path %></p>
