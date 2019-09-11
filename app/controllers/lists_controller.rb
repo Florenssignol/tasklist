@@ -36,10 +36,24 @@ class ListsController < ApplicationController
     redirect_to lists_url, notice: 'List was successfully destroyed.' 
   end
 
+  def verify_list_access
+    if current_user.id == @list.user_id
+      return true 
+    elsif @list.list_accesses.exists?(user_id: current_user.id)
+      return true
+    else
+      return false
+    end
+  end
+
   private
 
   def set_list
     @list = List.find(params[:id])
+
+    if verify_list_access == false
+      redirect_to root_path, notice: "you don't have access to this list"
+    end
   end
 
   def list_params

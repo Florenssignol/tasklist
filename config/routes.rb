@@ -18,5 +18,6 @@ Rails.application.routes.draw do
         get :archived
       end
     end
+    resources :list_accesses, only: [:new, :create]
   end
 end
