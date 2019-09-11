@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>List Name</th>
+      <th>Task Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+        <tr>
+        <td><%= link_to task.list.name, list_tasks_path(task.list_id) %></td>
+        <td><%= task.name %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<p><%= link_to 'Home', root_path %></p>

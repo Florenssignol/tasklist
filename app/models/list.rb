@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+    include AlgoliaSearch
     has_many :tasks, dependent: :destroy
     has_many :tags, through: :tasks
     belongs_to :user
@@ -15,4 +16,11 @@ class List < ApplicationRecord
             UserMailer.with(user: self.user, list: self).list_finished_email.deliver_later
         end
     end
+
+    algoliasearch do
+        attributes :name, :created_at
+        searchableAttributes ['name']
+        customRanking ['desc(created_at)']
+    end
+
 end

@@ -1,5 +1,7 @@
 {
   "name": "tasklist",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "algoliasearch": "^3.34.0"
+  }
 }
