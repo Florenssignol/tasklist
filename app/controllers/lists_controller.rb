@@ -41,6 +41,10 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
+
+    if verify_list_access == false
+      redirect_to root_path, notice: "you don't have access to this list"
+    end
   end
 
   def list_params

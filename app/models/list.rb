@@ -2,6 +2,7 @@ class List < ApplicationRecord
     include AlgoliaSearch
     has_many :tasks, dependent: :destroy
     has_many :tags, through: :tasks
+    has_many :list_accesses, dependent: :destroy
     belongs_to :user
 
     validates :name, presence: true

@@ -66,7 +66,11 @@ class TasksController < ApplicationController
     private 
 
     def set_list
-        @list = current_user.lists.find(params[:list_id])
+        @list = List.find(params[:list_id])
+
+        if verify_list_access == false
+            redirect_to root_path, notice: "you don't have access to this list"
+        end
     end
 
     def set_task
