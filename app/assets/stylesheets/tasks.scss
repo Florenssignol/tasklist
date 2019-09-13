@@ -6,13 +6,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.titles {
-    font-family: 'Manjari', sans-serif;
-    margin: 10px;
-    padding-top: 10px;
-    padding-left: 30px;
-    text-align: center;
-}
 .main_text {
     font-family: 'Roboto', sans-serif;
     margin: 30px;
@@ -21,56 +14,20 @@
     padding-right: 90px;
 }
 
-.secondary-pages-title-links {
-    margin: 12px;
-    padding: 14px;
-    font-size: 13px;
-    color: #0B7189;
-    text-transform: capitalize;
-}
-
-a.secondary-pages-title-links:visited {
-    color: #0B7189;
-}
-
-a.secondary-pages-title-links:hover {
-    color: inherit;
-    background-color: inherit;
-    font-size: 15px;
-    text-decoration: none;
+.sub-texts {
+    text-align: center;
 }
 
 .secondary-pages-links {
     margin: 12px;
     padding: 14px;
     font-size: 13px;
-    color: #0B7189;
-}
-
-a.secondary-pages-links:visited {
-    color: #0B7189;
-}
-
-a.secondary-pages-links:hover {
-    color: inherit;
-    background-color: inherit;
-    font-size: 15px;
-    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
 }
 
 .secondary-pages-lower-texts {
-    margin-top: 10px;
     font-size: 13px;
-    padding-left: 10px;
-}
-
-a.secondary-pages-lower-texts:hover {
-    color: inherit;
-    background-color: inherit;
-    font-size: 15px;
-    text-decoration: none;
-}
-
-a.secondary-pages-lower-texts:visited {
-    color: #0B7189;
+    padding-right: 70px;
+    color: black;
 }

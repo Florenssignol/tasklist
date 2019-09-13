@@ -11,27 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :task_name %>
+    <%= form.text_field :name, id: :task_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :task_description%>
+    <%= form.text_area :description, id: :task_description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :duration %>
-    <%= form.select :duration, [5, 10, 15, 20], id: :task_duration %>
+    <%= form.select :duration, [5, 10, 15, 20], id: :task_duration, class: "form-control"   %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :all_tags %>
-    <%= form.text_field :all_tags, placeholder: "tags here separated with a comma" %>
+    <%= form.text_field :all_tags, placeholder: "tags here separated with a comma", class: "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :submit, class: "btn btn-secondary" %>
   </div>
+  <br>
 <% end %>
+
+
+  <%# <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button> %>

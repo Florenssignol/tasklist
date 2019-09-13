@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasklist</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Roboto&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag    'static_page', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+
+  <body class="text-center" cs-shortcut-listen="true">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Hello</h1>
+    <p class= "lead">Welcome to the task list project. The Task list project is an amazing project that will help you manage all your tasks.</p>
+    <br>
+    <p><%= link_to "sign in", new_user_session_path, class: "btn btn-lg btn-secondary"  %></p>
+    <p><%= link_to "create your account", new_user_registration_path, class: "btn btn-lg btn-secondary" %></p>
+  </main>
+  <footer class="mastfoot mt-auto">
+    <p class= "lead">Project created by Florence</p>
+  </footer>
+</div>
+       
+  </body>
+</html>
