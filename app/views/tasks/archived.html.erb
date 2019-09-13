@@ -1,3 +1,7 @@
-<h1>Archived Tasks</h1>
-<p><%= link_to 'Active Tasks', list_tasks_path %></p>
-<%= render 'index' %>
+<div class="main_title">
+    <h1>Archived Tasks</h1>
+</div> 
+<%= render 'index' %> 
+<small class="d-block text-right mt-3">
+    <%= link_to 'Active Tasks', list_tasks_path, class: "secondary-pages-lower-texts" %>
+</small>

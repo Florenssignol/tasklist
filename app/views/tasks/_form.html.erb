@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :task_name %>
+    <%= form.text_field :name, id: :task_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :task_description%>
+    <%= form.text_area :description, id: :task_description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :duration %>
-    <%= form.select :duration, [5, 10, 15, 20], id: :task_duration %>
+    <%= form.select :duration, [5, 10, 15, 20], id: :task_duration, class: "form-control"   %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :all_tags %>
-    <%= form.text_field :all_tags, placeholder: "tags here separated with a comma" %>
+    <%= form.text_field :all_tags, placeholder: "tags here separated with a comma", class: "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :submit, class: "btn btn-secondary" %>
   </div>
+  <br>
 <% end %>

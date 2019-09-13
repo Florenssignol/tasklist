@@ -13,10 +13,11 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.order(:name), :id, :name %>
+    <%= form.collection_select :user_id, User.order(:name), :id, :name, class: "form-control" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :submit, class: "btn btn-secondary" %>
   </div>
+  <br>
 <% end %>

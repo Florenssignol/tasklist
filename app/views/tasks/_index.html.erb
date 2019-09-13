@@ -1,44 +1,45 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Duration</th>
-      <th>Description</th>
-      <th>Created at </th>
-      <th>Done at </th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if @tasks.size == 0 %>
-    <tr>
-      <td colspan="6">No tasks in this list</td>
-    </tr> 
-    <% end %>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.duration %></td>
-        <td><%= task.description %></td>
-        <td><%= task.created_at.strftime("%b %d at %I:%M %p") %></td>
-        <% if task.done %>
-          <td><%= task.done_at.strftime("%b %d at %I:%M %p") %></td>
-        <% else %>
-          <td><%= link_to 'Mark as done', mark_as_done_list_task_path(@list, task) %></td>
-        <% end %>
-        <td><%= link_to 'Edit', edit_list_task_path(@list, task) %></td>
-        <td><%= link_to 'Destroy', list_task_path(@list, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<p class="main_title"><%= link_to 'New Task', new_list_task_path, class: "secondary-pages-links" %>
 <br>
-
-<p><%= link_to 'New Task', new_list_task_path %></p>
-<p><%= link_to 'Back to lists', lists_path %></p>
-<p><%= link_to 'Home', root_path %></p>
-<p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+<%= link_to 'Give list access to a friend', new_list_list_access_path(@list), class: "secondary-pages-links" %>
+<br>
+<%= link_to 'Delete list', list_path(@list), method: :delete, data: { confirm: 'Are you sure?' }, class: "secondary-pages-links" %></p>
 
 
+<% if params[:filter_by_tag] %>
+  <%= link_to list_tasks_path(@list) do %> 
+    <span class="badge badge-secondary"> clear filter </span>
+  <% end %>
+<% end %>
+<div class="my-3 p-3 bg-white rounded box-shadow">
+  <h6 class="border-bottom border-gray pb-2 mb-0"><%= @list.name %></h6> 
+  <% if @tasks.size == 0 %>
+    <p>No tasks in this list</p>
+  <% end %>
+  
+  <% @tasks.each do |task| %>
+    <div class="media text-muted pt-3">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark"><%= "#{task.name.capitalize}, #{task.duration}" %> mins</strong>
+        <%= task.description %>
+        tags: 
+        <% task.tags.each do |tag| %>
+          <%= link_to list_tasks_path(@list, filter_by_tag: tag.name) do %> 
+            <span class="badge badge-secondary"> <%= tag.name %> </span>
+          <% end %>
+        <% end %>
+        created on: <%= task.created_at.strftime("%b %d at %I:%M %p") %>
+        <% if task.done %>
+          done on: <%= task.done_at.strftime("%b %d at %I:%M %p") %>
+        <% else %>
+          <%= link_to 'Mark as done', mark_as_done_list_task_path(@list, task), class: "secondary-pages-links " %>
+        <% end %>
+        <%= link_to 'Edit', edit_list_task_path(@list, task), class: "secondary-pages-links" %>
+        <%= link_to 'Destroy', list_task_path(@list, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "secondary-pages-links" %>
+      </p>
+    </div>
+  <% end %>
+</div>
+  <small class="d-block text-right mt-3">
+    <%= link_to 'Back', lists_path, class: "secondary-pages-lower-texts" %>
+  </small>
+</div>
