@@ -19,7 +19,7 @@ open https://mailcatcher.me/ follow instructions and then rake automated_count
 # app available online at:
 https://myawesometasklist.herokuapp.com/
 
-# you might need to provide an api key and application id to use algoliasearch.
-
 # How to change private keys for algolia:
+You might need to provide an api key and application id to use algoliasearch, 
+then put them in this file:
 EDITOR="code --wait" bin/rails credentials:edit
