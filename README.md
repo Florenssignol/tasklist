@@ -23,3 +23,6 @@ https://myawesometasklist.herokuapp.com/
 You might need to provide an api key and application id to use algoliasearch, 
 then put them in this file:
 EDITOR="code --wait" bin/rails credentials:edit
+
+# launch all tests:
+rails t test/system
